@@ -13,34 +13,35 @@ public class Score : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         this.scoreText = GameObject.Find("ScoreText");
+
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
     }
-
     void OnCollisionEnter(Collision other)
     {
 
-        if (tag == "SmallStarTag")
+        if (other.gameObject.tag == "SmallStarTag")
         {
             this.score += 10;
         }
-        else if (tag == "LargeStarTag")
+        else if (other.gameObject.tag == "LargeStarTag")
         {
             this.score += 50;
         }
-        else if (tag == "SmallCloudTag")
+        else if (other.gameObject.tag == "SmallCloudTag")
         {
             this.score += 100;
         }
-        else if (tag == "LargeCloudTag")
+        else if (other.gameObject.tag == "LargeCloudTag")
         {
             this.score += 500;
         }
 
         this.scoreText.GetComponent<Text>().text = "Score" + this.score;
-
     }
 }
